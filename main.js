@@ -592,9 +592,9 @@ function sofaPiece(g, len, mat, depth = 1.05) {
 // Entry court: travertine, twin reflecting pools, olives, palms, bollard lights
 for (const [z0, z1] of [[3.0, 6.3], [9.7, 13.0]]) {
   box(10.2, 0.08, z1 - z0 + 0.2, -7.5, 0, (z0 + z1) / 2, M.planterStone);
-  const w = box(10, 0.02, z1 - z0, -7.5, 0.06, (z0 + z1) / 2, M.mirrorWater, { cast: false }); w.receiveShadow = true;
+  const w = box(10, 0.012, z1 - z0, -7.5, 0.08, (z0 + z1) / 2, M.mirrorWater, { cast: false }); w.receiveShadow = true;
   addCol(-12.6, -2.4, z0 - 0.1, z1 + 0.1);
-  for (let i = 0; i < 4; i++) { const l = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.02, 0.06), M.glow); l.position.set(-12 + i * 3, 0.081, z0 < 8 ? z1 - 0.06 : z0 + 0.06); world.add(l); }
+  for (let i = 0; i < 4; i++) { const l = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.02, 0.06), M.glow); l.position.set(-12 + i * 3, 0.095, z0 < 8 ? z1 - 0.06 : z0 + 0.06); world.add(l); }
 }
 olive(-13.1, 2.9, 1.25); olive(-13.1, 13.1, 1.2); olive(-1.4, 3.0, 0.9); olive(-1.4, 13.0, 0.9);
 palm(-13.2, 6.0, 6.2, 0.9, 0.4); palm(-13.2, 10.0, 7.0, 1.0, -0.4);
