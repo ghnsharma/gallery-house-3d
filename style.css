@@ -1,0 +1,63 @@
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#efe6d6;font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#2b241d;-webkit-user-select:none;user-select:none}
+#app{position:fixed;inset:0}
+#app canvas{display:block}
+#loader{position:fixed;inset:0;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:#efe6d6;z-index:50;font-size:14px;letter-spacing:.04em;transition:opacity .6s}
+#loader.hide{opacity:0;pointer-events:none}
+.spin{width:34px;height:34px;border:3px solid #cdbca2;border-top-color:#8a5a33;border-radius:50%;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.glass{background:rgba(255,250,242,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(120,95,65,.18);box-shadow:0 6px 24px rgba(60,40,20,.12);border-radius:14px}
+#brand{position:fixed;top:14px;left:14px;display:flex;align-items:center;gap:12px;padding:9px 14px;z-index:10}
+#brand .logo{font-weight:800;letter-spacing:.18em;font-size:13px;color:#6e4524;line-height:1}
+#brand .logo span{display:block;font-weight:500;font-size:9px;letter-spacing:.42em;color:#9b7a57;margin-top:3px}
+#brand .title{border-left:1px solid #d6c7b1;padding-left:12px;line-height:1.15}
+#brand .title b{font-size:15px;display:block}
+#brand .title small{font-size:11px;color:#7d6a55}
+#modes{position:fixed;top:14px;right:14px;display:flex;gap:6px;padding:6px;z-index:10}
+#modes button,#rooms li{font:inherit}
+#modes button{border:0;background:transparent;padding:8px 13px;border-radius:9px;font-size:13px;font-weight:600;color:#5a4633;cursor:pointer}
+#modes button:hover{background:rgba(138,90,51,.1)}
+#modes button.on{background:#3b2f25;color:#fff7ec}
+#modes button.accent{background:#b0703c;color:#fff}
+#modes button.accent:hover{background:#9a5e2f}
+#rooms{position:fixed;left:14px;top:84px;width:204px;padding:10px 8px;z-index:10;max-height:calc(100% - 330px);overflow:auto}
+#rooms h3{margin:2px 8px 6px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9b7a57}
+#rooms ul{list-style:none;margin:0;padding:0}
+#rooms li{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;font-size:13px;cursor:pointer}
+#rooms li:hover{background:rgba(138,90,51,.1)}
+#rooms li.cur{background:rgba(176,112,60,.16);font-weight:600}
+#rooms li i{width:10px;height:10px;border-radius:3px;flex:none;border:1px solid rgba(0,0,0,.15)}
+#rooms li em{margin-left:auto;font-style:normal;font-size:10px;color:#9a8771}
+#mapWrap{position:fixed;right:14px;bottom:38px;padding:8px 8px 4px;z-index:10}
+#minimap{width:300px;height:110px;display:block;cursor:crosshair;border-radius:8px}
+.maphint{font-size:10px;color:#8b7860;text-align:center;padding:3px 0 1px}
+#help{position:fixed;left:50%;bottom:38px;transform:translateX(-50%);padding:9px 16px;font-size:12.5px;z-index:10;text-align:center;max-width:92vw;line-height:1.5}
+#help kbd{display:inline-block;background:#3b2f25;color:#fff;border-radius:4px;padding:0 5px;font-size:11px;font-family:inherit;margin:0 1px}
+#crosshair{position:fixed;left:50%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:0 0 0 1px rgba(0,0,0,.25);z-index:9;display:none}
+body.walk #crosshair{display:block}
+#toast{position:fixed;top:78px;left:50%;transform:translateX(-50%);padding:8px 16px;font-size:14px;font-weight:600;z-index:12;opacity:0;transition:opacity .4s;pointer-events:none}
+#toast.show{opacity:1}
+#foot{position:fixed;left:14px;bottom:10px;font-size:11px;color:#6e5b46;z-index:10;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+#foot a{color:#8a5a33}
+.label{font-size:12px;font-weight:600;color:#2b241d;background:rgba(255,250,242,.92);padding:4px 9px;border-radius:20px;border:1px solid rgba(120,95,65,.25);box-shadow:0 2px 8px rgba(60,40,20,.18);white-space:nowrap;cursor:pointer;pointer-events:auto;transition:transform .15s}
+.label:hover{transform:scale(1.08);background:#3b2f25;color:#fff}
+.label small{font-weight:400;color:#8b7860;margin-left:4px}
+.label:hover small{color:#e5d5bf}
+#joy{position:fixed;left:26px;bottom:60px;width:120px;height:120px;border-radius:50%;background:rgba(255,250,242,.35);border:2px solid rgba(255,255,255,.7);z-index:11;display:none;touch-action:none}
+#knob{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:rgba(59,47,37,.75);border:2px solid #fff}
+body.walk.touch #joy{display:block}
+@media (max-width:760px){
+  #rooms{top:auto;bottom:156px;left:auto;right:10px;width:150px;max-height:34vh;padding:6px}
+  #rooms li{padding:4px 6px;font-size:12px}
+  #rooms li em{display:none}
+  #brand{top:8px;left:8px;padding:6px 10px}
+  #brand .title small{display:none}
+  #modes{top:auto;bottom:8px;right:auto;left:50%;transform:translateX(-50%)}
+  #modes button{padding:7px 10px;font-size:12px}
+  #mapWrap{top:62px;bottom:auto;right:8px;padding:5px}
+  #minimap{width:200px;height:73px}
+  .maphint{display:none}
+  #help{bottom:56px;font-size:11px}
+  #foot{display:none}
+  body.walk.touch #rooms{display:none}
+}

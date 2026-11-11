@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Gallery House · Akar Design 3D Walkthrough</title>
+<meta name="description" content="Interactive 3D walkthrough of the Gallery House, generated from its floor plan. An Akar Design showcase.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%233b2f25%22/%3E%3Cpath d=%22M8 24 16 7l8 17h-4l-4-9-4 9z%22 fill=%22%23e9c79a%22/%3E%3C/svg%3E">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="app"></div>
+<div id="loader"><div class="spin"></div><div>Building Gallery House…</div></div>
+
+<header id="brand">
+  <div class="logo">AKAR<span>DESIGN</span></div>
+  <div class="title"><b>Gallery House</b><small>Floor plan → 3D · Ground floor</small></div>
+</header>
+
+<nav id="modes">
+  <button id="btnOrbit" class="on" title="Dollhouse view (1)">Dollhouse</button>
+  <button id="btnWalk" title="First-person walkthrough (2)">Walkthrough</button>
+  <button id="btnTour" class="accent" title="Animated tour (T)">▶ Auto tour</button>
+</nav>
+
+<aside id="rooms">
+  <h3>Rooms</h3>
+  <ul id="roomList"></ul>
+</aside>
+
+<div id="mapWrap">
+  <canvas id="minimap" width="600" height="220"></canvas>
+  <div class="maphint">Click the plan to jump there</div>
+</div>
+
+<div id="help"></div>
+<div id="crosshair"></div>
+<div id="joy"><div id="knob"></div></div>
+<div id="toast"></div>
+
+<footer id="foot">Akar Design · Gallery House · <a href="https://akar.design" target="_blank" rel="noopener">akar.design</a></footer>
+<script type="module" src="main.js"></script>
+</body>
+</html>
